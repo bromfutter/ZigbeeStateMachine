@@ -40,7 +40,6 @@ void setPinInterrupt(uint8_t selectedPort, uint16_t selectedPins, uint8_t select
 //******************************************************************************
 // buffer functions
 //******************************************************************************
-int8_t Check_Digi_Pkt(ringBufS *_this);
 void Process_Digi_Pkt(ringBufS *_this, uint8_t * data);
 void ringBufS_init (ringBufS *_this);
 uint8_t ringBufS_empty (ringBufS *_this);

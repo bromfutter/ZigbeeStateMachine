@@ -27,8 +27,13 @@ int main(void)
 }
 
 //******************************************************************************
-//  @info: handle_state_INIT
-//  initilizes all hardware I/O and connected modules/sensors
+//                                   STATES
+//******************************************************************************
+//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
 //******************************************************************************
 void handle_state_INIT(void)
 {
@@ -36,6 +41,12 @@ void handle_state_INIT(void)
     do_state = handle_state_WAIT_FOR_INPUT;
 }
 
+//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 void handle_state_WAIT_FOR_INPUT(void)
 {
     // Enter LPM3, interrupts enabled
@@ -47,12 +58,24 @@ void handle_state_WAIT_FOR_INPUT(void)
     }
 }
 
+//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 void handle_state_TX_DIGI (void)
 {
     Tx_byte();
     do_state = handle_state_WAIT_FOR_INPUT;
 }
 
+//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 void handle_state_RX_DIGI (void)
 {
     Process_Digi_Pkt(&rx_buffer, dataPtr);

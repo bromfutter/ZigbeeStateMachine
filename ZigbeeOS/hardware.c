@@ -116,6 +116,12 @@ void Tx_byte(void)
     //EUSCI_A_UART_transmitData(EUSCI_A0_BASE, zigbeePkt[TXData++]);
 }
 
+//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 void setPinInterrupt(uint8_t selectedPort, uint16_t selectedPins, uint8_t selectedResistor, uint8_t edgeSelect)
 {
     if(selectedPort < 3)
@@ -138,3 +144,4 @@ void setPinInterrupt(uint8_t selectedPort, uint16_t selectedPins, uint8_t select
         GPIO_clearInterrupt(selectedPort, selectedPins);
     }
 }
+// end of hardware.c

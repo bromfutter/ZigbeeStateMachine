@@ -6,20 +6,12 @@
  */
 #include "main.h"
 
-int8_t Check_Digi_Pkt(ringBufS *_this)
-{
-    // get digi packet in a determine the next state
-    if(_this->count >= 3)
-    {
-        // length of zigbee packet
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
+//******************************************************************************
+//         name:    Process_Digi_Pkt
+//  description:    determines is rx'd pkt is a valid zigbee api frame
+//   parameters:    pointer to ringBufS structure
+//      returns:    none
+//******************************************************************************
 void Process_Digi_Pkt(ringBufS *_this, uint8_t * data)
 {
     uint8_t tempData = 0;
@@ -54,13 +46,10 @@ void Process_Digi_Pkt(ringBufS *_this, uint8_t * data)
 }
 
 //******************************************************************************
-//******************************************************************************
-//******************************************************************************
-//
-//  Ring Buffer functions
-//
-//******************************************************************************
-//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
 //******************************************************************************
 void ringBufS_init (ringBufS *_this)
 {
@@ -84,17 +73,32 @@ void ringBufS_init (ringBufS *_this)
 }
 
 //******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 uint8_t ringBufS_empty (ringBufS *_this)
 {
     return (0==_this->count);
 }
 
 //******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 uint8_t ringBufS_full (ringBufS *_this)
 {
     return (_this->count>=RING_BUF_SZ);
 }
 
+//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
 //******************************************************************************
 uint8_t ringBufS_get (volatile ringBufS *_this)
 {
@@ -113,6 +117,11 @@ uint8_t ringBufS_get (volatile ringBufS *_this)
 }
 
 //******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 void ringBufS_put (volatile ringBufS *_this, const unsigned char c)
 {
     if (_this->count < RING_BUF_SZ)
@@ -124,6 +133,11 @@ void ringBufS_put (volatile ringBufS *_this, const unsigned char c)
 }
 
 //******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 void ringBufS_flush (volatile ringBufS *_this, const uint8_t clearBuffer)
 {
   _this->count  = 0;
@@ -134,8 +148,12 @@ void ringBufS_flush (volatile ringBufS *_this, const uint8_t clearBuffer)
     //memset (_this->buf, 0, sizeof (_this->buf));
   }
 }
+
 //******************************************************************************
-//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
 //******************************************************************************
 unsigned int modulo_inc (const unsigned int value, const unsigned int modulus)
 {
@@ -147,11 +165,15 @@ unsigned int modulo_inc (const unsigned int value, const unsigned int modulus)
     return (my_value);
 }
 
+//******************************************************************************
+//         name:
+//  description:
+//   parameters:
+//      returns:
+//******************************************************************************
 unsigned int modulo_dec (const unsigned int value, const unsigned int modulus)
 {
     unsigned int my_value = (0==value) ? (modulus - 1) : (value - 1);
     return (my_value);
 }
-
-
-
+// end of buffer.c
