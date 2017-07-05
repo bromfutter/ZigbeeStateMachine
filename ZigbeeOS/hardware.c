@@ -96,7 +96,7 @@ void configureUART (void)
     EUSCI_A_UART_clearInterrupt(EUSCI_A0_BASE, EUSCI_A_UART_RECEIVE_INTERRUPT);
 
     // Enable USCI_A0 RX interrupt
-    EUSCI_A_UART_enableInterrupt(EUSCI_A0_BASE, EUSCI_A_UART_RECEIVE_INTERRUPT);      // Enable interrupt
+    EUSCI_A_UART_enableInterrupt(EUSCI_A0_BASE, EUSCI_A_UART_RECEIVE_INTERRUPT);
 }
 
 void Tx_byte(void)
@@ -122,7 +122,10 @@ void Tx_byte(void)
 //   parameters:
 //      returns:
 //******************************************************************************
-void setPinInterrupt(uint8_t selectedPort, uint16_t selectedPins, uint8_t selectedResistor, uint8_t edgeSelect)
+void setPinInterrupt(uint8_t selectedPort,
+                     uint16_t selectedPins,
+                     uint8_t selectedResistor,
+                     uint8_t edgeSelect)
 {
     if(selectedPort < 3)
     {
